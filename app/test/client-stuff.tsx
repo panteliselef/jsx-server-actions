@@ -4,7 +4,12 @@ import { startTransition, useActionState } from "react";
 import { deletePatient } from "./actions";
 
 const DeletePatientForm = () => {
-  const [state, trigger, isPending] = useActionState(deletePatient, null);
+  const [state, trigger, isPending] = useActionState(() => {
+    /**
+     * Maybe do more stuff here in order to persist the pending state
+     */
+    return deletePatient();
+  }, null);
   return (
     <div className="flex flex-col gap-4">
       <h1 className="text-2xl">Delete patient</h1>
