@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
-import { signIn } from "@/lib/auth/actions";
+import { signIn, signOut } from "@/lib/auth/actions";
 import { startTransition, useActionState } from "react";
 
 const SignInButton = () => {
@@ -11,6 +12,18 @@ const SignInButton = () => {
       }}
     >
       SignIn
+    </button>
+  );
+};
+
+const SignOutButton = () => {
+  return (
+    <button
+      onClick={async () => {
+        await signOut();
+      }}
+    >
+      SignOut
     </button>
   );
 };
@@ -53,4 +66,4 @@ function UserVerification({
   );
 }
 
-export { SignInButton, UserVerification };
+export { SignInButton, SignOutButton, UserVerification };

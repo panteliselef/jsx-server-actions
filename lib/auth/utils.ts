@@ -1,6 +1,6 @@
 import { cookies } from "next/headers";
 
-const ONE_MINUTE = 1000 * 60;
+const ASSURANCE_WINDOW = 1000 * 10;
 
 export const isSignedIn = () => {
   if (cookies().has("user")) {
@@ -15,7 +15,7 @@ export const isSignedOut = () => {
 
 export const isAssured = () => {
   if (cookies().has("user")) {
-    return Date.now() - Number(cookies().get("user")?.value) < ONE_MINUTE;
+    return Date.now() - Number(cookies().get("user")?.value) < ASSURANCE_WINDOW;
   }
   return false;
 };

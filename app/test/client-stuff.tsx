@@ -18,7 +18,8 @@ const DeletePatientForm = () => {
       >
         Click to delete patient {isPending && "(loading...)"}
       </button>
-      {state}
+
+      {!isPending && (state === true ? "Deleted" : state)}
     </div>
   );
 };
